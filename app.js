@@ -18,44 +18,88 @@ var game = {
       dy: -1
 }
 
+function initiateGame(){
 
-function drawMissile() {
-  game.ctx.beginPath();
-  game.ctx.rect(game.missileStartX, game.missileStartY, 10, 10);
-  game.ctx.fillstyle = 'red';
-  game.ctx.fill();
+var enemyMissiles = [{'id': 'enemy1', 'x': 150, 'y': -20, 'w': 100, 'h': 30},
+                     {'id': 'enemy2', 'x': 550, 'y': -20, 'w': 100, 'h': 30},
+                     {'id': 'enemy3', 'x': 950, 'y': -20, 'w': 100, 'h': 30}
+                   ];
+
+function drawEnemies () {
+  for(var i = 0; i < enemyMissiles.length; i ++) {
+    game.ctx.fillStyle = 'green';
+    game.ctx.fill()
+    game.ctx.rect(enemyMissiles[i].x, enemyMissiles[i].y += .5, enemyMissiles[i].w, enemyMissiles[i].h);
+  }
 }
 
-function draw() {
+function animate() {
   game.ctx.clearRect(0, 0, canvas.width, canvas.height)
-  drawMissile();
-
-  game.missileStartX += game.dx;
-  game.missileStartY += game.dy;
-
-  game.ctx.rect(game.explosion.x, game.explosion.y, 20, 20)
-  game.ctx.fillstyle = 'red'
-  game.ctx.fill();
+  drawEnemies();
 }
 
-$(document).on('mousedown', 'canvas', mousePosition);
-// Find the coordinates of where the mouse is clicked
-function mousePosition(event) {
-    var x = event.clientX - game.toLeft;
-    var y = event.clientY;
-    console.log(x,y)
-
-    game.explosion.x = x - 10;
-    game.explosion.y = y - 10;
+setInterval(animate, 10)
 
 }
 
-setInterval(draw, 30)
+initiateGame();
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function drawMissile() {
+//   game.ctx.beginPath();
+//   game.ctx.rect(game.missileStartX, game.missileStartY, 10, 10);
+//   game.ctx.fillstyle = 'red';
+//   game.ctx.fill();
+// }
+//
+// function draw() {
+//   game.ctx.clearRect(0, 0, canvas.width, canvas.height)
+//   drawMissile();
+//
+//   game.missileStartX += game.dx;
+//   game.missileStartY += game.dy;
+//
+//   game.ctx.rect(game.explosion.x, game.explosion.y, 20, 20)
+//   game.ctx.fillstyle = 'red'
+//   game.ctx.fill();
+// }
+//
+// $(document).on('mousedown', 'canvas', mousePosition);
+// // Find the coordinates of where the mouse is clicked
+// function mousePosition(event) {
+//     var x = event.clientX - game.toLeft;
+//     var y = event.clientY;
+//     console.log(x,y)
+//
+//     game.explosion.x = x - 10;
+//     game.explosion.y = y - 10;
+//
+// }
+//
+// setInterval(draw, 30)
+
+
+
+
+//................................OLD CODE......................................
 
 
 
