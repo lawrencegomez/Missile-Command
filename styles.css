@@ -3,6 +3,14 @@ body {
   padding: 0;
 }
 
+div {
+  display: inline-block;
+}
+
+.enemy-missile {
+  position: absolute;
+}
+
 #game-container {
   height: 800px;
   width: 1200px;

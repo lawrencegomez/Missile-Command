@@ -2,39 +2,75 @@ var x = 0;
 var maxFallDistance = 750;
 var fallRate = 1500;
 var time = Date.now()
+var player1Score = 0;
+var $board = $('#game-container');
+var $start = $('#start');
 
-function Missile()
+// constructor for a new missile
+function Missile() {
+  var x = Math.floor(Math.random() * 1200 - 50);
+  var y = 0;
+  // this is a string of the SVG element that will be used to create the new missile element
+  var missileString = "<svg class = 'enemy-missile' width='50' height='200' style='margin-left: "+ x + "px'><rect width='50' height='50' stoke='white' fill='black' x='0' y='0'/><rect id='target' width='50' height='50' stoke='white' fill='blue' x='0' y='70'/></svg>"
+  $board.append(missileString);
+  this.$selector = $('.enemy-missile').last()
+  var $selector = this.$selector
+  var $target = this.$selector.children('#target')
+  $target.on('click', function() {
+    new Missile()
+    $(this).parent().remove();
+  })
 
-
-
-function dropMissile () {
-  $('.enemy-missile').attr('style', 'margin-top: ' + x + 'px;')
-    x += 1
-  if(x === maxFallDistance) {
-    $('.enemy-missile').remove();
-  }
+  this.movement = setInterval(function() {
+    y += 1.2
+    $selector.css('margin-top', y + 'px')
+  }, 10)
 }
 
-function removeMissile() {
-  $('#target').parent().remove()
-}
 
-function hit() {
-  $('#target').on('click', removeMissile)
-}
-
-setInterval(dropMissile, 10)
-
-function initialize() {
-  hit();
-}
+$start.on('click', Missile)
 
 
 
 
 
 
-initialize();
+
+
+
+
+
+
+
+// function dropMissile () {
+//   $('.enemy-missile').attr('style', 'margin-top: ' + x + 'px;')
+//     x += 1
+//     if(x === maxFallDistance) {
+//     $('.enemy-missile').remove();
+//     }
+//   }
+//
+// function removeMissile() {
+//   $('#target').parent().remove()
+//
+// }
+//
+// function hit() {
+//   $('#target').on('click', removeMissile)
+// }
+//
+// // setInterval(dropMissile, 30)
+//
+// function initialize() {
+//   hit();
+// }
+//
+//
+//
+//
+//
+//
+// initialize();
 
 
 
