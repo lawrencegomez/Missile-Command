@@ -3,19 +3,32 @@ body {
   padding: 0;
 }
 
-div {
-  display: inline-block;
-}
 
 .enemy-missile {
   position: absolute;
 }
 
-#game-container {
+#container {
   height: 800px;
   width: 1200px;
   background-color: lime;
-  margin: 0 auto;
+}
+
+#game-board {
+  height: 700px;
+  width: 1150px;
+  background-color: lime;
+}
+
+#scoreboard {
+  font-size: 50px;
+  position: absolute;
+  left: 1200px;
+  top: 0px;
+  height: 100px;
+  width: 100px;
+  background-color: yellow;
+  color: black;
 }
 
 canvas {

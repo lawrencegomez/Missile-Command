@@ -1,14 +1,20 @@
 var x = 0;
-var maxFallDistance = 750;
-var fallRate = 1500;
+var maxFallDistance = 750 + 'px';
 var time = Date.now()
 var player1Score = 0;
-var $board = $('#game-container');
+var $container = $('#container')
+var $board = $('#game-board');
 var $start = $('#start');
+var $scoreboard = $('#scoreboard');
+var fallRate = function() {
+                return Math.floor((Math.random()*50)+10);
+               }
+var time = Date.now()
+
 
 // constructor for a new missile
 function Missile() {
-  var x = Math.floor(Math.random() * 1200 - 50);
+  var x = Math.floor(Math.random() * 1150);
   var y = 0;
   // this is a string of the SVG element that will be used to create the new missile element
   var missileString = "<svg class = 'enemy-missile' width='50' height='200' style='margin-left: "+ x + "px'><rect width='50' height='50' stoke='white' fill='black' x='0' y='0'/><rect id='target' width='50' height='50' stoke='white' fill='blue' x='0' y='70'/></svg>"
@@ -16,19 +22,36 @@ function Missile() {
   this.$selector = $('.enemy-missile').last()
   var $selector = this.$selector
   var $target = this.$selector.children('#target')
-  $target.on('click', function() {
-    new Missile()
+  $target.on('mousedown', function() {
     $(this).parent().remove();
+    player1Score += 1
+    $scoreboard.text(player1Score)
+    console.log(player1Score)
   })
 
   this.movement = setInterval(function() {
-    y += 1.2
+    y += 2
     $selector.css('margin-top', y + 'px')
-  }, 10)
+    var n = $selector.css('margin-top')
+  }, fallRate())
 }
 
 
-$start.on('click', Missile)
+
+
+
+
+$start.on('click', function() {
+  new Missile;
+})
+
+
+// Find the coordinates of where the mouse is clicked
+function mousePosition(event) {
+    var xx = event.clientX - game.toLeft;
+    var yy = event.clientY;
+    console.log(x,y)
+}
 
 
 
