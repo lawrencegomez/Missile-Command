@@ -8,6 +8,10 @@ body {
   position: absolute;
 }
 
+.player-missile {
+  position: absolute;
+}
+
 #container {
   height: 800px;
   width: 1200px;

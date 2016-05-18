@@ -1,15 +1,73 @@
 var x = 0;
 var maxFallDistance = 750 + 'px';
 var time = Date.now()
+var lastSpawn = -1;
+var spawnRate1 = function() { return ((Math.random() * 3000) + 1000)}
+var spawnRate2 = function() { return ((Math.random() * 2000) + 800)}
+var spawnRate3 = function() { return ((Math.random() * 1500) + 600)}
+var spawnRate4 = function() { return ((Math.random() * 1000) + 500)}
+var spawnRate5 = function() { return ((Math.random() * 700) + 300)}
+var spawnRate6 = function() { return ((Math.random() * 450) + 200)}
+var spawnRate7 = function() { return ((Math.random() * 300) + 50)}
 var player1Score = 0;
 var $container = $('#container')
 var $board = $('#game-board');
 var $start = $('#start');
 var $scoreboard = $('#scoreboard');
+var $playerMissile = $('.player-missile')
 var fallRate = function() {
                 return Math.floor((Math.random()*50)+10);
                }
-var time = Date.now()
+var xp = 0;
+var yp = 0;
+mouseX = 0;
+mouseY = 0;
+
+
+$(document).on('mousedown', '#container', function(event) {
+  var mouseX = event.clientX;
+  var mouseY = event.clientY;
+  console.log('x: ' + mouseX + ' y: ' + mouseY)
+  // animate();
+})
+
+// function animate() {
+//   xp += (mouseX - xp)/15;
+//   yp += (mouseY - yp)/15;
+//   Missile.style.left = xp + 'px';
+//   Missile.style.top= yp + 'px';
+//   setTimeout(animate,10);
+// }
+
+function simulateClick() {
+  var event = new MouseEvent('click', {});
+  var start = document.querySelector('#start')
+  start.dispatchEvent(event);
+    if(player1Score < 15) {
+      setTimeout(simulateClick, spawnRate1())
+    }
+    else if (player1Score < 30) {
+      setTimeout(simulateClick, spawnRate2())
+    }
+    else if (player1Score < 45) {
+      setTimeout(simulateClick, spawnRate3())
+    }
+    else if (player1Score < 60) {
+      setTimeout(simulateClick, spawnRate4())
+    }
+    else if (player1Score < 75) {
+      setTimeout(simulateClick, spawnRate5())
+    }
+    else if (player1Score < 90) {
+      setTimeout(simulateClick, spawnRate6())
+    }
+    else if (player1Score < 120) {
+      setTimeout(simulateClick, spawnRate7())
+    }
+}
+
+setTimeout(simulateClick, 100)
+
 
 
 // constructor for a new missile
@@ -26,7 +84,6 @@ function Missile() {
     $(this).parent().remove();
     player1Score += 1
     $scoreboard.text(player1Score)
-    console.log(player1Score)
   })
 
   this.movement = setInterval(function() {
@@ -36,22 +93,21 @@ function Missile() {
   }, fallRate())
 }
 
+//constructor for player missiles
+function GoodMissile () {
+  var missileString = "<svg class = 'player-missile' width='50' height='50' style='margin-left: 600px; margin-top: 750px'><rect width='50' height='50' stoke='white' fill='black' x='0' y='0'/>"
+  $board.append(missileString)
+}
 
 
 
 
 
 $start.on('click', function() {
-  new Missile;
+  new Missile
 })
 
-
-// Find the coordinates of where the mouse is clicked
-function mousePosition(event) {
-    var xx = event.clientX - game.toLeft;
-    var yy = event.clientY;
-    console.log(x,y)
-}
+new GoodMissile
 
 
 
