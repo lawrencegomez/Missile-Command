@@ -1,3 +1,8 @@
+@font-face {
+  font-family: atari;
+  src: url('PressStart2P.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -30,7 +35,7 @@ svg {
   left: 515px;
   top: 250px;
   position: absolute;
-  font-size: 40px;
+  font-size: 20px;
   text-align: center;
   border-left: 15px solid red;
   border-right: 15px solid red;
@@ -45,6 +50,7 @@ svg {
   height: 100px;
   padding-top: 25px;
   color: white;
+  font-family: atari;
 }
 
 
@@ -64,7 +70,8 @@ button {
   position: absolute;
   top: 500px;
   left: 140px;
-  font-size: 75px;
+  font-size: 50px;
+  font-family: atari;
 
 }
 
