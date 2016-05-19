@@ -1,42 +1,80 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: grey;
+  background: url('./bg.jpg')
+}
+
+img {
+  position: absolute;
+  top: 35px;
+  left: 795px;
 }
 
 
-.enemy-missile {
+/*.enemy-missile {
   position: absolute;
 }
 
 .player-missile {
   position: absolute;
+}*/
+svg {
+  color: red;
 }
 
-#container {
-  height: 800px;
-  width: 1200px;
-  /*background-color: lime;*/
+#scorebar {
+  background-color: black;
+  height: 100px;
+  width: 1150px;
+  left: 515px;
+  top: 250px;
+  position: absolute;
+  font-size: 40px;
+  text-align: center;
+  border-left: 15px solid red;
+  border-right: 15px solid red;
+  border-top: 15px solid red;
 }
+
+.scoreboard {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 374px;
+  height: 100px;
+  padding-top: 25px;
+  color: white;
+}
+
 
 #game-board {
   height: 700px;
   width: 1150px;
-  background-color: lime;
+  background-color: black;
+  margin-left: 515px;
+  margin-top: 350px;
+  display: block;
+  border-left: 15px solid red;
+  border-right: 15px solid red;
+  border-bottom: 15px solid red;
+}
+
+button {
+  position: absolute;
+  top: 500px;
+  left: 140px;
+  font-size: 75px;
+
 }
 
 #scoreboard {
   font-size: 50px;
-  position: absolute;
   left: 1200px;
   top: 0px;
   height: 100px;
   width: 100px;
   background-color: yellow;
   color: black;
-}
-
-canvas {
-  background-color: orange;
-  margin: 0;
-  /*border: 2px solid black;*/
+  position: absolute;
 }
