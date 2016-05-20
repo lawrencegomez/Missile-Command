@@ -15,6 +15,7 @@ Definitely not Atari's Missile Command, that's for sure! But, it is similar in t
 1. Missiles fall from the sky at a random rate
 2. Collision detection between the players missiles and the falling missiles (not 100% yet)
 3. The amount of missiles each player hits is tallied
+4. The speed at which missiles fall increases as the time increases
 
 #Collision Detection:
 - The way collision detection works is by comparing the distances between the center points of each falling missile and each player's missiles and if that distance is less than the distance of the two circles radii then that registers as a hit. See below sketch. 
@@ -25,8 +26,8 @@ Definitely not Atari's Missile Command, that's for sure! But, it is similar in t
 # What doesn't:
 1. Collision detection does not work flawlessly
 2. Missiles falling from the sky don't fall at random angles
-3. There is counter for each players score
-4. The game never switches turns on it's own
+3. The game never switches turns on it's own
+4. There is now way to stop the game except by refreshing the page
 5. All of the CSS is positioned absolute so the game is not responsive in any way
 
 # Instructions:
