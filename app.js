@@ -34,6 +34,7 @@ var game = {x: 0,
                       }, 1000)
                     },
             }
+
   var xx = function() {
     return game.randBetween(20,50)
   }
@@ -46,13 +47,13 @@ function faster() {
   } else if (game.time < 25) {
     return game.randBetween(4500, 6000)
   } else if (game.time < 35) {
-    return game.randBetween(3000, 5000)
+    return game.randBetween(3500, 5000)
   } else if (game.time < 45) {
-    return game.randBetween(2500, 4000)
+    return game.randBetween(3000, 4500)
   } else if (game.time < 55) {
-    return game.randBetween(2000, 3000)
+    return game.randBetween(2500, 3500)
   } else if (game.time < 65) {
-    return game.randBetween(1000, 2000)
+    return game.randBetween(1500, 2500)
   }
 }
 
@@ -66,6 +67,7 @@ $explosionEl = $(explosionEl).attr({
   fill:"white",
   id: 'player-missile'
 });
+
 game.$board.append($explosionEl)
 
 // set the current player to player 1
@@ -147,13 +149,16 @@ game.$board.on('click',  function(event) {
             step: function(now) {$(this).attr("r", now)}
           })
           $(this).remove()
+          $(this).attr({
+            cy: 0,
+            cx: 0,
+          })
+
         }
       })
     }
   })
 })
-
-
 
 
 // constructor for a new missile
@@ -171,7 +176,7 @@ function Missile() {
   })
   game.$board.append($missileEl); //appends a new missile to the game board
   // var $enemyR = $enemyMissile.attr('r');
-  $missileEl.animate({ cy: 610 }, {//animate the cy value of the missile
+  $missileEl.animate({ cy: 500 }, {//animate the cy value of the missile
     duration: faster(),
     easing: 'linear',
     step: function(now) {
@@ -212,8 +217,8 @@ function stopAnimation() {
     // $missileEl.stop();
     game.$board.children().remove()
     // game.$board.off();
-    // window.clearInterval(missileInterval)
-    // clearInterval(timer)
+    window.clearInterval(missileInterval)
+    clearInterval(timer)
     game.$timer.text('Game Over')
     switchTurns();
 }
