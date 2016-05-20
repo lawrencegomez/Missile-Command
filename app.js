@@ -27,7 +27,7 @@ var game = {x: 0,
                     },
             $enemyMissile: $('#enemy-missile'),
             $playerMissile: $('player-missile'),
-            timer: function() {
+            timer: function() { //timer function that adds 1 every second to the time variable
                       setInterval(function() {
                         game.time ++
                         game.$timer.text(': ' + game.time)
@@ -35,12 +35,14 @@ var game = {x: 0,
                     },
             }
 
-  var xx = function() {
+  var xx = function() { //uses the randBetween function to generate a random number between 20 and 70
     return game.randBetween(20,50)
   }
-  game.toLeft = game.$board.offset().left + 15;
+  game.toLeft = game.$board.offset().left + 15; //calibrates the position of the board for later use with the mouse coordinates
   game.toTop = game.$board.offset().top;
 
+//function that will increase the speed of the falling missiles as the time increases
+//to make the game harder and harder
 function faster() {
   if (game.time < 15) {
     return game.randBetween(5000,7000)
@@ -68,9 +70,10 @@ $explosionEl = $(explosionEl).attr({
   id: 'player-missile'
 });
 
-game.$board.append($explosionEl)
+game.$board.append($explosionEl) //appends the initial explosion to the screen
 
 // set the current player to player 1
+// the reason its player two is because when the start button is pressed it switches turns to player 1
 game.currentPlayer = game.player2
 
 // function to switch turns
@@ -86,48 +89,50 @@ function switchTurns() {
   }
 }
 
+//function to control the interval of the falling missiles
 function missileInterval() {
   switchTurns()
   game.timer();
   // console.log(game.currentPlayer)
   setInterval(function(){
     new Missile();
-  }, game.randBetween(400, 1100))
+  }, game.randBetween(500, 1500))
 }
 
-// starts the game when the start button is clicked
+// Calls the missileInterval function once the start button is pressed
 game.$start.on('click', missileInterval)
 
 
 // Function to grab the coordinates of where the mouse is clicked
 // and then generate an explosion on those coordinates
 game.$board.on('click',  function(event) {
-  game.mouseX = event.clientX - game.toLeft;
+  game.mouseX = event.clientX - game.toLeft; //calibrates the mouse location based off the location of the game-board
   game.mouseY = event.clientY - game.toTop;
   // console.log('x: ' + game.mouseX + ' y: ' + game.mouseY)
   // var explosionEl = game.svgEl("circle");
   // console.log(game.mouseX)
   $explosionEl.attr({
-    cx: game.mouseX,// (game.$board.width() / 2),
-    cy: game.mouseY, //game.$board.height(),
+    cx: game.mouseX,
+    cy: game.mouseY,
     r: 1,
     fill:"black",
     id: 'player-missile'
   });
 
-  // animates the explosion by enlarging the radius, using the random num generator
+  // animates the player missile starting from the bottom of the screen to where ever
+  // the mouse was clicked
   var flightExplosion = game.svgEl("circle");
   $flightExplosion = $(flightExplosion).attr({
     cx: (game.$board.width() / 2),
     cy: game.$board.height(),
     r: 2,
-    fill:"red",
+    fill:"red", //color of the object
     id: 'player-missile'
   });
   game.$board.append($flightExplosion)
   $flightExplosion.animate({cx: game.mouseX, cy: game.mouseY}, {
     step: function(now) {
-      $(this).attr("cx", now);
+      $(this).attr("cx", now); //animates the cx and cy value 
       $(this).attr("cy", now);
       // console.log('y: ' + $(this).attr('cy') + ' x: ' + $(this).attr('cx'))
     },
@@ -208,7 +213,7 @@ function Missile() {
   });
 }
 
-
+// Function to stop everything! Doesn't actually work :-(
 function stopAnimation() {
     game.time = 0
     $missileEl.finish()
