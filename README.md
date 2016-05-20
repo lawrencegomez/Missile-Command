@@ -1,4 +1,4 @@
-![](./Missile Command Logo.png)
+![](./Images/Missile Command Logo.png)
 
 # Project Numero Uno
 First project for WDI SM 23
@@ -20,8 +20,8 @@ Definitely not Atari's Missile Command, that's for sure! But, it is similar in t
 #Collision Detection:
 - The way collision detection works is by comparing the distances between the center points of each falling missile and each player's missiles and if that distance is less than the distance of the two circles radii then that registers as a hit. See below sketch. 
 
-![](./Collision Detection.png) 
-![](./Collision Detection 2.png)
+![](./Images/Collision Detection.png) 
+![](./Images/Collision Detection 2.png)
 
 # What doesn't:
 1. Collision detection does not work flawlessly
