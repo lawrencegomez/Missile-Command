@@ -26,6 +26,7 @@ Definitely not Atari's Missile Command, that's for sure! But, it is similar in t
 # What doesn't:
 1. Collision detection does not work flawlessly
 2. Missiles falling from the sky don't fall at random angles
+3. When a player fires a missile, that missiles position is saved on the board until a new position is clicked
 3. The game never switches turns on it's own
 4. There is now way to stop the game except by refreshing the page
 5. All of the CSS is positioned absolute so the game is not responsive in any way
