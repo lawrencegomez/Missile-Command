@@ -3,6 +3,13 @@
   src: url('PressStart2P.ttf');
 }
 
+.no-display {
+  display: none;
+}
+
+*::-moz-selection { background: transparent; }
+*::selection { background: transparent; }
+
 body {
   margin: 0;
   padding: 0;
@@ -13,7 +20,7 @@ body {
 img {
   position: absolute;
   top: 35px;
-  left: 795px;
+  left: 577px;
 }
 
 
@@ -31,8 +38,8 @@ svg {
 #scorebar {
   background-color: black;
   height: 100px;
-  width: 1150px;
-  left: 515px;
+  width: 1000px;
+  left: 390px;
   top: 250px;
   position: absolute;
   font-size: 20px;
@@ -45,20 +52,28 @@ svg {
 .scoreboard {
   display: inline-block;
   padding: 0;
-  margin: 0;
-  width: 374px;
+  margin: 8px;
+  width: 300px;
   height: 100px;
   padding-top: 25px;
   color: white;
   font-family: atari;
 }
 
+/*#player1Scoreboard {
+  background-color: green;
+}
+
+#player2Scoreboard {
+  background-color: green;
+}*/
+
 
 #game-board {
-  height: 700px;
-  width: 1150px;
+  height: 500px;
+  width: 1000px;
   background-color: black;
-  margin-left: 515px;
+  margin-left: 390px;
   margin-top: 350px;
   display: block;
   border-left: 15px solid red;
@@ -69,8 +84,8 @@ svg {
 button {
   position: absolute;
   top: 500px;
-  left: 140px;
-  font-size: 50px;
+  left: 95px;
+  font-size: 35px;
   font-family: atari;
 
 }
@@ -84,4 +99,9 @@ button {
   background-color: yellow;
   color: black;
   position: absolute;
+}
+
+.underline {
+  text-decoration: underline;
+  color: red;
 }
